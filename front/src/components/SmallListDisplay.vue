@@ -13,7 +13,7 @@ onBeforeMount(() => {
     <div class="flex">
       <div class="text-center w-full font-medium py-1">{{ kind }}</div>
       <div class="w-2/12 text-sm py-1">
-        <router-link to="#">더보기+</router-link>
+        <router-link :to="kind">더보기+</router-link>
       </div>
     </div>
     <div>
@@ -29,7 +29,10 @@ onBeforeMount(() => {
         <tr class="border-b">
           <td class="py-1">10</td>
           <td>알림</td>
-          <td>공지사항 제목이 출력됩니다.</td>
+          <td>
+            <!--            TODO: 글번호 주입-->
+            <router-link :to="`/${kind}/` + 10">공지사항 제목이 출력됩니다.</router-link>
+          </td>
         </tr>
         <tr class="border-b">
           <td class="py-1">10</td>

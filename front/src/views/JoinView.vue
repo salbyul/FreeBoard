@@ -20,7 +20,7 @@
 
     <!--    버튼-->
     <div>
-      <button class="block mx-auto mb-1 w-4/12 py-1.5 border text-gray-100 bg-sky-500 text-sm rounded-sm duration-300 hover:duration-300 hover:bg-sky-600">회원가입 하기</button>
+      <button class="block mx-auto mb-1 w-4/12 py-1.5 border bg-gray-50 text-sm rounded-sm duration-300 hover:duration-300 hover:bg-gray-200">회원가입 하기</button>
     </div>
   </div>
 </template>
