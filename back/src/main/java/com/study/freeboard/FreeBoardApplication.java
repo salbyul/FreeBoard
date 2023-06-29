@@ -1,13 +1,13 @@
-package com.study.FreeBoad;
+package com.study.freeboard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FreeBoadApplication {
+public class FreeBoardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FreeBoadApplication.class, args);
+		SpringApplication.run(FreeBoardApplication.class, args);
 	}
 
 }

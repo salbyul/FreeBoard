@@ -1,10 +1,10 @@
-package com.study.FreeBoad;
+package com.study.freeboard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FreeBoadApplicationTests {
+class FreeBoardApplicationTests {
 
 	@Test
 	void contextLoads() {
