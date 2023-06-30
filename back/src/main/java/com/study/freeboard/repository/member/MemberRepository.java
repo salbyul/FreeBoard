@@ -18,4 +18,12 @@ public interface MemberRepository {
      * @return 레코드 수
      */
     Integer countByUserId(String userId);
+
+    /**
+     * userId와 password가 일치하는 레코드의 수를 반환한다.
+     *
+     * @param memberLoginDTO userId와 password가 담긴 객체
+     * @return 레코드 수
+     */
+    Integer countByUserIdAndPassword(MemberLoginDTO memberLoginDTO);
 }

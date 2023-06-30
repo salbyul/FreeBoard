@@ -6,7 +6,7 @@
 
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
         INSERT INTO member (user_id, password, name)
-        VALUES (#{userId}, #{password}, #{name})
+        VALUES (#{userId}, #{encryptedPassword}, #{name})
     </insert>
 
     <select id="countByUserId" resultType="Integer">
@@ -14,4 +14,12 @@
         FROM member
         WHERE user_id = #{userId}
     </select>
+
+    <select id="countByUserIdAndPassword" resultType="Integer">
+        SELECT COUNT(*)
+        FROM member
+        WHERE user_id = #{userId}
+          AND password = #{encryptedPassword}
+    </select>
+
 </mapper>

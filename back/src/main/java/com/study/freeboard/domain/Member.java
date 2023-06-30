@@ -1,7 +1,10 @@
 package com.study.freeboard.domain;
 
+import lombok.Getter;
+
 import java.time.LocalDateTime;
 
+@Getter
 // Table: member
 public class Member {
 

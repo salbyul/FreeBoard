@@ -26,6 +26,9 @@ public class MemberValidator {
      * @param userId userId
      */
     private void validateUserId(String userId) {
+        if (userId == null) {
+            throw new MemberException(MEMBER_USER_ID_NULL);
+        }
         if (userId.length() < 4 || userId.length() > 11) {
             throw new MemberException(MEMBER_USER_ID_LENGTH);
         }
@@ -70,6 +73,9 @@ public class MemberValidator {
      * @param password password
      */
     private void validatePassword(String userId, String password) {
+        if (password == null) {
+            throw new MemberException(MEMBER_PASSWORD_NULL);
+        }
         if (password.length() < 4 || password.length() > 11) {
             throw new MemberException(MEMBER_PASSWORD_LENGTH);
         }
@@ -109,6 +115,9 @@ public class MemberValidator {
      * @param name name
      */
     private void validateName(String name) {
+        if (name == null) {
+            throw new MemberException(MEMBER_NAME_NULL);
+        }
         if (name.length() < 2 || name.length() > 4) {
             throw new MemberException(MEMBER_NAME_LENGTH);
         }
