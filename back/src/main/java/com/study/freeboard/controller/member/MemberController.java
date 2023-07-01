@@ -1,4 +1,4 @@
-package com.study.freeboard.controller;
+package com.study.freeboard.controller.member;
 
 import com.study.freeboard.service.JwtTokenService;
 import com.study.freeboard.response.APIResponse;
@@ -45,7 +45,7 @@ public class MemberController {
      * @return response
      */
     @ResponseStatus(HttpStatus.OK)
-    @GetMapping("/user_id")
+    @GetMapping("/user-id")
     public APIResponse validateDuplicatedUserId(String userId) {
         memberService.validateDuplicateUserId(userId);
         return generateResponse();
@@ -59,8 +59,8 @@ public class MemberController {
      */
     @PostMapping("/login")
     public APIResponse login(@RequestBody MemberLoginDTO memberLoginDTO) throws NoSuchAlgorithmException {
-        memberService.loginMember(memberLoginDTO);
+        Long memberId = memberService.loginMember(memberLoginDTO);
         return generateResponse()
-                .addData("token", jwtTokenService.generateToken(memberLoginDTO.getUserId()));
+                .addData("token", jwtTokenService.generateToken(memberId));
     }
 }

@@ -25,9 +25,11 @@ public interface MemberService {
     /**
      * 로그인 메소드
      * MemberLoginDTO의 userId와 password가 올바른지 확인한다.
+     * 그 후 DB에서 해당 레코드의 기본키를 반환한다.
      *
      * @param memberLoginDTO 로그인 시 사용되는 객체
      * @throws NoSuchAlgorithmException 알고리즘을 사용할 수 없을 시 발생
+     * @return 기본키
      */
-    void loginMember(MemberLoginDTO memberLoginDTO) throws NoSuchAlgorithmException;
+    Long loginMember(MemberLoginDTO memberLoginDTO) throws NoSuchAlgorithmException;
 }

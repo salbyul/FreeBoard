@@ -4,7 +4,7 @@
 
 <mapper namespace="com.study.freeboard.repository.member.MemberMapper">
 
-    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+    <insert id="save" useGeneratedKeys="true" keyProperty="memberId">
         INSERT INTO member (user_id, password, name)
         VALUES (#{userId}, #{encryptedPassword}, #{name})
     </insert>
@@ -15,8 +15,8 @@
         WHERE user_id = #{userId}
     </select>
 
-    <select id="countByUserIdAndPassword" resultType="Integer">
-        SELECT COUNT(*)
+    <select id="findByUserIdAndPassword" resultType="com.study.freeboard.domain.Member">
+        SELECT member_id AS memberId, user_id AS userId, password, name, generation_timestamp AS generationTimestamp, modification_timestamp AS modificationTimestamp
         FROM member
         WHERE user_id = #{userId}
           AND password = #{encryptedPassword}

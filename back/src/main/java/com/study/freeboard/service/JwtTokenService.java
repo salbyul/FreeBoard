@@ -27,13 +27,13 @@ public class JwtTokenService {
     /**
      * JWT Token을 생성한다.
      * 만료기간: 생성시간 + 30분
-     * body에 userId 주입
+     * body에 memberId 주입
      * 알고리즘: SHA-256
      *
-     * @param userId userId
+     * @param memberId memberId
      * @return Token
      */
-    public String generateToken(String userId) {
+    public String generateToken(Long memberId) {
         Date now = new Date();
 
         Claims claims = Jwts.claims().setSubject("authorization");
@@ -41,7 +41,7 @@ public class JwtTokenService {
         claims.setAudience("user");
         claims.setIssuedAt(now);
         claims.setExpiration(new Date(now.getTime() + validTime));
-        claims.put("userId", userId);
+        claims.put("memberId", memberId);
 
         return Jwts.builder()
                 .setClaims(claims)
@@ -50,16 +50,22 @@ public class JwtTokenService {
     }
 
     /**
-     * 토큰에서 userId를 추출해 반환한다.
+     * 토큰에서 memberId 추출해 반환한다.
      *
      * @param token Jwt Token
-     * @return userId
+     * @return memberId
      */
-    public String getUserId(String token) {
+    public Long getMemberId(String token) {
         JwtParser build = Jwts
                 .parserBuilder()
                 .setSigningKey(key)
                 .build();
-        return (String) build.parseClaimsJws(token).getBody().get("userId");
+        return Long.parseLong(build.parseClaimsJws(token).getBody().get("memberId").toString());
+
+    }
+
+//    TODO
+    public void validateToken(String token) {
+        Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
     }
 }

@@ -1,15 +1,17 @@
 package com.study.freeboard.domain;
 
 import lombok.Getter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
 
 @Getter
+@ToString
 // Table: member
 public class Member {
 
     //    Column: member_id
-    private Long id;
+    private Long memberId;
 
     //    Column: user_id
     private String userId;

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Gallery {
 
     //    Column: gallery_id
-    private Long id;
+    private Long galleryId;
 
     //    Column: category
     private String category;

@@ -1,5 +1,7 @@
 package com.study.freeboard.repository.member;
 
+import com.study.freeboard.domain.Member;
+
 import static com.study.freeboard.dto.member.MemberDTO.*;
 
 public interface MemberRepository {
@@ -20,10 +22,18 @@ public interface MemberRepository {
     Integer countByUserId(String userId);
 
     /**
-     * userId와 password가 일치하는 레코드의 수를 반환한다.
+     * userId와 password가 일치하는 레코드를 반환한다.
      *
      * @param memberLoginDTO userId와 password가 담긴 객체
-     * @return 레코드 수
+     * @return member
      */
-    Integer countByUserIdAndPassword(MemberLoginDTO memberLoginDTO);
+    Member findByUserIdAndPassword(MemberLoginDTO memberLoginDTO);
+
+    /**
+     * userId를 이용해 찾은 레코드의 기본키를 반환한다.
+     *
+     * @param userId userId
+     * @return 기본키
+     */
+    Long findMemberIdByUserId(String userId);
 }

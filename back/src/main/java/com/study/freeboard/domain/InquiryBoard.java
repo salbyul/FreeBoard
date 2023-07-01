@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class InquiryBoard {
 
     //    Column: inquiry_board_id
-    private Long id;
+    private Long inquiryBoardId;
 
     //    Column: title
     private String title;

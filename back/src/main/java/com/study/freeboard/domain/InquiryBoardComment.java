@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class InquiryBoardComment {
 
     //    Column: inquiry_board_comment_id
-    private Long id;
+    private Long inquiryBoardCommentId;
 
     //    Column: content
     private String content;

@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Notice {
 
     //    Column: notice_id
-    private Long id;
+    private Long noticeId;
 
     //    Column: category
     private String category;

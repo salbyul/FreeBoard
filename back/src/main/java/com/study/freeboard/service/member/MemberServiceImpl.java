@@ -1,5 +1,6 @@
 package com.study.freeboard.service.member;
 
+import com.study.freeboard.domain.Member;
 import com.study.freeboard.encryptor.Encryptor;
 import com.study.freeboard.exception.member.MemberException;
 import com.study.freeboard.repository.member.MemberRepository;
@@ -39,7 +40,7 @@ public class MemberServiceImpl implements MemberService {
 
         validateDuplicateUserId(memberJoinDTO.getUserId());
         memberRepository.save(memberJoinDTO);
-        return memberJoinDTO.getId();
+        return memberJoinDTO.getMemberId();
     }
 
     /**
@@ -58,13 +59,22 @@ public class MemberServiceImpl implements MemberService {
         }
     }
 
+    /**
+     * memberLoginDTO에 담긴 userId와 password를 이용해 DB에서 레코드를 찾아 기본키를 반환한다.
+     * 레코드를 찾을 수 없을 경우 MemberException 발생
+     *
+     * @param memberLoginDTO 로그인 시 사용되는 객체
+     * @return 기본키
+     * @throws NoSuchAlgorithmException 알고리즘을 사용할 수 없을 시 발생
+     */
     @Override
-    public void loginMember(MemberLoginDTO memberLoginDTO) throws NoSuchAlgorithmException {
+    public Long loginMember(MemberLoginDTO memberLoginDTO) throws NoSuchAlgorithmException {
         String encryptedPassword = encryptor.encrypt(memberLoginDTO.getPassword());
         memberLoginDTO.setEncryptedPassword(encryptedPassword);
-        Integer counts = memberRepository.countByUserIdAndPassword(memberLoginDTO);
-        if (counts != 1) {
+        Member foundMember = memberRepository.findByUserIdAndPassword(memberLoginDTO);
+        if (foundMember == null) {
             throw new MemberException(ErrorCode.MEMBER_LOGIN);
         }
+        return foundMember.getMemberId();
     }
 }

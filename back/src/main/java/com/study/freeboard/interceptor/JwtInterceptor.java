@@ -24,22 +24,21 @@ public class JwtInterceptor implements HandlerInterceptor {
         log.info("[JwtInterceptor PreHandle]");
         try {
             String token = extractToken(request);
-            String userId = jwtTokenService.getUserId(token);
-            request.setAttribute("userId", userId);
+            jwtTokenService.validateToken(token);
         } catch (NullPointerException e) {
-            log.error("NullPointerException");
+            log.error("NullPointerException Token");
             request.getRequestDispatcher("/api/errors/token/null").forward(request, response);
             return false;
         } catch (ExpiredJwtException e) {
-            log.error("Expired Token");
+            log.error("ExpiredJwtException Token");
             request.getRequestDispatcher("/api/errors/token/expiration").forward(request, response);
             return false;
         } catch (MalformedJwtException e) {
-            log.error("MalformedJwtException");
+            log.error("MalformedJwtException Token");
             request.getRequestDispatcher("/api/errors/token/malformed").forward(request, response);
             return false;
         } catch (SignatureException e) {
-            log.error("SignatureException");
+            log.error("SignatureException Token");
             request.getRequestDispatcher("/api/errors/token/signature").forward(request, response);
             return false;
         } catch (Exception e) {

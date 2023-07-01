@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 public class Supervisor {
 
     //    Column: supervisor_id
-    private Long id;
+    private Long supervisorId;
 
     //    Column: user_id
     private String userId;

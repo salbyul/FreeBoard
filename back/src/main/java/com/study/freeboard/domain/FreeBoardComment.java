@@ -7,7 +7,7 @@ public class FreeBoardComment {
 
 
     //    Column: free_board_comment
-    private Long id;
+    private Long freeBoardCommentId;
 
     //    Column: content
     private String content;

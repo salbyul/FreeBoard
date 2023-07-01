@@ -4,7 +4,7 @@ package com.study.freeboard.domain;
 public class Picture {
 
     //    Column: picture_id
-    private Long id;
+    private Long pictureId;
 
     //    Column: original_name
     private String originalName;

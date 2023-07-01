@@ -14,7 +14,7 @@ public class ErrorResponse {
     private final Error error;
 
     /**
-     * Member Error Response를 생성한다.
+     * Member ErrorResponse를 생성한다.
      *
      * @param timestamp timestamp
      * @param errorCode errorCode
@@ -22,5 +22,14 @@ public class ErrorResponse {
      */
     public static ErrorResponse generateMemberResponse(LocalDateTime timestamp, ErrorCode errorCode) {
         return new ErrorResponse(timestamp, new MemberError(errorCode));
+    }
+
+    /**
+     * 정의되지 않은 ErrorResponse를 생성한다.
+     *
+     * @return ErrorResponse
+     */
+    public static ErrorResponse generateResponse() {
+        return new ErrorResponse(LocalDateTime.now(), new GlobalError(ErrorCode.UNKNOWN_ERROR));
     }
 }

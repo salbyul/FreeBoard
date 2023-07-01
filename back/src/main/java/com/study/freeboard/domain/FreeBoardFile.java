@@ -4,7 +4,7 @@ package com.study.freeboard.domain;
 public class FreeBoardFile {
 
     //    Column: free_board_file_id
-    private Long id;
+    private Long freeBoardFileId;
 
     //    Column: original_name
     private String originalName;

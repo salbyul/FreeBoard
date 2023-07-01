@@ -7,7 +7,7 @@ public class FreeBoard {
 
 
     //    Column: free_board_id
-    private Long id;
+    private Long freeBoardId;
 
     //    Column: category
     private String category;
