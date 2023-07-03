@@ -30,10 +30,10 @@ public interface MemberRepository {
     Member findByUserIdAndPassword(MemberLoginDTO memberLoginDTO);
 
     /**
-     * userId를 이용해 찾은 레코드의 기본키를 반환한다.
+     * memberId를 이용해 해당 유저의 이름을 찾아 반환한다.
      *
-     * @param userId userId
-     * @return 기본키
+     * @param memberId memberId
+     * @return 유저의 이름
      */
-    Long findMemberIdByUserId(String userId);
+    String findNameByMemberId(Long memberId);
 }

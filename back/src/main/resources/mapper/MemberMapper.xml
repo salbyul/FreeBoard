@@ -16,10 +16,21 @@
     </select>
 
     <select id="findByUserIdAndPassword" resultType="com.study.freeboard.domain.Member">
-        SELECT member_id AS memberId, user_id AS userId, password, name, generation_timestamp AS generationTimestamp, modification_timestamp AS modificationTimestamp
+        SELECT member_id              AS memberId,
+               user_id                AS userId,
+               password,
+               name,
+               generation_timestamp   AS generationTimestamp,
+               modification_timestamp AS modificationTimestamp
         FROM member
         WHERE user_id = #{userId}
           AND password = #{encryptedPassword}
+    </select>
+
+    <select id="findNameByMemberId" resultType="String">
+        SELECT name
+        FROM member
+        WHERE member_id = #{memberId}
     </select>
 
 </mapper>

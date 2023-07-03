@@ -10,7 +10,7 @@ import java.util.Map;
 public class APIResponse {
 
     private final LocalDateTime timestamp;
-    private final Map<String, Object> data = new HashMap<>();
+    private final Map<String, Object> body = new HashMap<>();
 
     private APIResponse() {
         this.timestamp = LocalDateTime.now();
@@ -21,7 +21,7 @@ public class APIResponse {
     }
 
     public APIResponse addData(String key, Object value) {
-        this.data.put(key, value);
+        this.body.put(key, value);
         return this;
     }
 }

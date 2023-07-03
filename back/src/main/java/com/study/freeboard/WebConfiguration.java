@@ -42,7 +42,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(jwtInterceptor)
                 .order(1)
-                .addPathPatterns("/test");
+                .addPathPatterns("/api/members/name");
     }
 
     @Override

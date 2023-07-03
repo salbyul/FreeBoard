@@ -11,3 +11,7 @@ export const validateDuplicateUserId = (userId) => {
 export const loginMember = (member) => {
     return http.post("/members/login", member);
 }
+
+export const getName = () => {
+    return http.get("/members/name");
+}

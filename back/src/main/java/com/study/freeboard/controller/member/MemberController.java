@@ -1,5 +1,7 @@
 package com.study.freeboard.controller.member;
 
+import com.study.freeboard.annotation.MemberId;
+import com.study.freeboard.repository.member.MemberRepository;
 import com.study.freeboard.service.JwtTokenService;
 import com.study.freeboard.response.APIResponse;
 import com.study.freeboard.service.member.MemberService;
@@ -20,6 +22,7 @@ import static com.study.freeboard.response.APIResponse.*;
 public class MemberController {
 
     private final MemberService memberService;
+    private final MemberRepository memberRepository;
     private final JwtTokenService jwtTokenService;
 
     /**
@@ -62,5 +65,18 @@ public class MemberController {
         Long memberId = memberService.loginMember(memberLoginDTO);
         return generateResponse()
                 .addData("token", jwtTokenService.generateToken(memberId));
+    }
+
+    /**
+     * 해당 회원의 이름을 반환하는 메소드
+     *
+     * @param memberId 해당 회원의 기본키
+     * @return 해당 회원의 name
+     */
+    @GetMapping("/name")
+    public APIResponse getName(@MemberId Long memberId) {
+        String foundName = memberRepository.findNameByMemberId(memberId);
+        return generateResponse()
+                .addData("name", foundName);
     }
 }

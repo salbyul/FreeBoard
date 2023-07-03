@@ -14,7 +14,6 @@ const fetchValidateDuplicateUserId = async () => {
       await validateDuplicateUserId(user.value.userId);
       isDuplication.value = false;
       alert('사용할 수 있는 아이디입니다.');
-
     } catch (error) {
       const code = error.response.data.error.code;
       if (code === '119') {

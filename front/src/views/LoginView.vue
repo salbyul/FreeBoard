@@ -1,11 +1,12 @@
 <script setup>
 import {useRouter} from "vue-router/dist/vue-router";
-import {ref} from "vue";
+import {inject, ref} from "vue";
 import {loginMember} from "../api/member";
 
 const router = useRouter();
 const userId = ref('');
 const password = ref('');
+const $cookies = inject('$cookies');
 
 const fetchLogin = async () => {
   if (userId.value.length > 0 && password.value.length > 0) {
@@ -15,8 +16,14 @@ const fetchLogin = async () => {
     }
     try {
       const data = await loginMember(user)
-      console.log(data);
+      console.log(data)
+      $cookies.set('token', data.body.token, '30min', '', '', true);
+      // TODO: 홈으로 이동 후 헤더 새로고침 안된다.
+      await router.push({
+        name: 'home'
+      })
     } catch (error) {
+      console.log(error)
       const data = error.response.data;
       if (data.error.code === '100') {
         alert('아이디나 비밀번호가 틀렸습니다.');
